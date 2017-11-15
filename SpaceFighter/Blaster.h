@@ -8,11 +8,10 @@ class Blaster : public Weapon
 
 public:
 
-
 	Blaster(const bool isActive) : Weapon(isActive)
 	{
 		m_cooldown = 0;
-		m_cooldownSeconds = 0.25;
+		m_cooldownSeconds = 0.35;
 	}
 
 	virtual ~Blaster() { }
@@ -32,9 +31,6 @@ public:
 
 	virtual void Fire(TriggerType triggerType)
 	{
-		bool ia = IsActive();
-		bool cf = CanFire();
-
 		if (IsActive() && CanFire())
 		{
 			if (triggerType.Contains(GetTriggerType()))

@@ -77,12 +77,10 @@ void PlayerShip::LoadContent(ResourceManager *pResourceManager)
 			 direction *= Math::NORMALIZE_PI_OVER4;
 		 }
 
-		 TriggerType type = TriggerType::NONE;
-
-		 if (pInput->IsKeyDown(Key::F)) type |= TriggerType::PRIMARY;
-		 if (pInput->IsKeyDown(Key::D)) type |= TriggerType::SECONDARY;
-		 if (pInput->IsKeyDown(Key::S)) type |= TriggerType::SPECIAL;
-
+		 //TriggerType type = TriggerType::NONE;
+		 //if (pInput->IsKeyDown(Key::F)) type |= TriggerType::PRIMARY;
+		 //if (pInput->IsKeyDown(Key::D)) type |= TriggerType::SECONDARY;
+		 //if (pInput->IsKeyDown(Key::S)) type |= TriggerType::SPECIAL;
 
 		 GamePadState *pState = &pInput->GetGamePadState(0);
 		 if (pState->IsConnected)
@@ -92,16 +90,17 @@ void PlayerShip::LoadContent(ResourceManager *pResourceManager)
 			 if (thumbstick.LengthSquared() < 0.08f) thumbstick = Vector2::ZERO;
 			 direction = thumbstick;
 
-			 type = TriggerType::NONE;
-
-			 if (pState->Triggers.Right > 0.5f) type |= TriggerType::PRIMARY;
-			 if (pState->Triggers.Left > 0.5f) type |= TriggerType::SECONDARY;
-			 if (pState->IsButtonDown(Button::Y)) type |= TriggerType::SPECIAL;
+			 //type = TriggerType::NONE;
+			 //if (pState->Triggers.Right > 0.5f) type |= TriggerType::PRIMARY;
+			 //if (pState->Triggers.Left > 0.5f) type |= TriggerType::SECONDARY;
+			 //if (pState->IsButtonDown(Button::Y)) type |= TriggerType::SPECIAL;
 		 }
 
 
 		 SetDesiredDirection(direction);
-		 if (type != TriggerType::NONE) FireWeapons(type);
+		 //if (type != TriggerType::NONE) FireWeapons(type);
+
+		 if (pInput->IsKeyDown(Key::SPACE)) FireWeapons(TriggerType::PRIMARY);
 	 }
  }
 

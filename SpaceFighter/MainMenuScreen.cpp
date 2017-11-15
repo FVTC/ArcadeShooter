@@ -44,9 +44,7 @@ void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 
 	// Create the menu items
 	const int COUNT = 2;
-	const int VERTICAL_SPACING = 50;
 	MenuItem *pItem;
-	Vector2 position = Game::GetScreenCenter() + Vector2::UNIT_Y * 160;
 	Font::SetLoadSize(20, true);
 	Font *pFont = pResourceManager->Load<Font>("Fonts\\Ethnocentric.ttf");
 
@@ -58,10 +56,9 @@ void MainMenuScreen::LoadContent(ResourceManager *pResourceManager)
 	for (int i = 0; i < COUNT; i++)
 	{
 		pItem = new MenuItem(text[i]);
-		pItem->SetPosition(position + Vector2::UNIT_Y * (VERTICAL_SPACING * i));
+		pItem->SetPosition(Vector2(100, 100 + 50 * i));
 		pItem->SetFont(pFont);
 		pItem->SetColor(Color::Blue);
-		pItem->SetTextAlign(TextAlign::CENTER);
 		pItem->SetSelected(i == 0);
 		AddMenuItem(pItem);
 	}
